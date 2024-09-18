@@ -1,0 +1,139 @@
+.sal-data .imput[readonly] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-color: #ced4da;
+}
+
+
+/*------------------------ CONTENIDO-------------------------------------------*/
+
+.sal-data{
+padding: 10px;
+display: grid;
+gap: 10px;
+}
+
+.sal-data .sal-cont-datos{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 10px;
+}
+
+.sal-data .sal-cont-inputs{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+width: 100%;
+gap: 10px;
+}
+
+.sal-datos-huesped, .sal-datos-habitacion, .sal-datos-reserva, .sal-datos-pagos {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 15px;
+padding: 10px;
+border-radius: 10px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+border: 1px solid grey;
+border-bottom: 5px solid #614BC3;
+}
+
+/* ---------- total a pagar --------------- */
+
+.sal-data .sal-form-salida{
+display: grid;
+gap: 10px;
+}
+.sal-data .cont-doble-boton{
+display: flex;
+justify-content: right;
+align-items: center;
+gap: 10px;
+padding: 10px;
+border-radius: 10px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+border: 1px solid grey;
+
+}
+.sal-data .form-group-total{
+display: flex;
+justify-content: right;
+margin-left: auto;
+background-color: rgb(168, 168, 168);
+font-size: 12px;
+border-radius: 10px;
+align-items: center;
+gap: 10px;
+padding-left: 10px;
+}
+
+.sal-data .res-cont-form {
+gap: 10px;
+display: flex;
+flex-direction: column;
+}
+
+.sal-data .cont-titulo-form {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.sal-data .titulo-form {
+color: #614BC3;
+font-size: 12px;
+font-weight: bold;
+}
+
+.sal-data .imput {
+height: 30px;
+width: auto;
+border-radius: 10px;
+border: 1px solid grey;
+padding: 0 10px;
+}
+
+.sal-data .form-group {
+display: flex;
+flex-direction: column;
+}
+
+.sal-data .form-group label {
+font-size: 11px;
+font-weight: bold;
+}
+
+.sal-data .boton-submit{
+    min-height: 30px;
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    background-color: #28b463;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+    right: 0;
+    /* margin-left: auto; */
+}
+
+.sal-data .boton-submit:hover{
+    opacity: .8;
+    scale: 1.02;
+}
+
+
+.sal-datos-huesped table, .sal-datos-habitacion table, .sal-datos-reserva table {
+width: 100%;
+border-collapse: collapse;
+font-size: 12px;
+}
+
+.sal-datos-huesped th, .sal-datos-habitacion th, .sal-datos-reserva th,
+.sal-datos-huesped td, .sal-datos-habitacion td, .sal-datos-reserva td {
+border: none;
+padding: 5px;
+text-align: left;
+}

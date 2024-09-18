@@ -1,0 +1,812 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+    font-weight: 300;
+    
+}
+
+a{
+    color: var(--fuente-color);
+}
+
+
+/* -MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO- */
+
+
+input, select{
+    background-color: var(--input-color);
+}
+
+body{
+    --color-fondo-menu:#512da8;
+    --color-fuente-menu: white;
+    --titulo-contenido-color: #512da8;
+    --menu-color: #2ECC71;
+    --fondo-color: white;
+    --fuente-color: auto;
+    
+    --borde-color: grey;
+    --borde-tabla-color: #ccc;
+    --tabla-color: #f2f2f2;
+    --fila-tabla-color: #f9f9f9;
+    color: var(--fuente-color);
+}
+
+body.dark {
+    /* --color-fondo-menu: linear-gradient(to bottom, #17202A, #17202A, #40337b, #614BC3);; */
+    --color-fondo-menu:#512da8;
+    --titulo-contenido-color: #512da8;
+    --menu-color: #ffffff;
+    --fondo-color: black;
+    --borde-color: grey;
+    --tabla-color: #595959;
+    --fila-tabla-color: #595959;
+    --contenido-color: #121212;
+    --fuente-color: white;
+    --input-color: #595959;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+.gral {
+    width: 100%;
+    /* min-width: 800px; */
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(400px, 1fr) auto;
+    grid-template-rows: minmax(10%, 80px) auto;
+    gap: 10px;
+    grid-template-areas:    "menu header header"
+                            "menu main main";
+    overflow: hidden;
+    background-color: var(--fondo-color);
+    padding: 10px;
+}
+
+.header, .main, .dis, .menu{
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.664);
+}
+
+
+/*---------------------- header ------------------*/
+
+.header {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-columns: auto auto;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    grid-area: header;
+    padding: 0px 30px;
+    background-color: var(--contenido-color);
+}
+
+/*---------------------- menú ------------------*/
+.menu {
+    background: var(--color-fondo-menu);          
+    position: relative;
+    grid-area: menu;
+    color: var(--color-fuente-menu);
+    display: flex;
+    overflow: hidden;
+}
+
+/*---------------------- dis ------------------*/
+
+.dis{
+    grid-area: dis;
+    display: none;
+    overflow: hidden;
+    position: relative; 
+}
+
+@media (max-width: 1200px){
+    .dis{
+        display: none;
+    }
+    .gral{
+        grid-template-areas:    "menu header header"
+                                "menu main main";
+    }
+
+    /* .menu{
+        display: none;
+        position: fixed;
+        left: 0;
+    } */
+}
+
+
+
+/*---------------------- ocultar barras laterales ------------------*/
+
+.main{
+    display: flex;
+    grid-area: main;
+    overflow: auto;
+    background-color: var(--contenido-color);
+    position: relative;
+}
+
+.menu-hidden .cont-flecha-menu-abrir{
+    display: flex;
+
+}
+
+.dis-hidden .cont-flecha-dis-abrir{
+    display: flex;
+    background-color: rgb(78, 155, 0);
+}
+
+.menu-hidden .contenido-menu{
+    display: none;
+}
+.dis-hidden .contenido-dis{
+    display: none;
+}
+
+/*-MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU-*/
+/*-MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU-*/
+
+/* The switch - the box around the slider */
+.switch {
+    display: block;
+    --width-of-switch: 40px;
+    --height-of-switch: 18px;
+    /* size of sliding icon -- sun and moon */
+    --size-of-icon: 12px;
+    /* it is like a inline-padding of switch */
+    --slider-offset: 0.3em;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+}
+
+    /* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f4f4f5;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon,1.4em);
+    width: var(--size-of-icon,1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset,0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
+    ;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #303136;
+}
+
+input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* ---------------------------------- */
+
+
+
+.menu .contenido-menu{
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 10px;
+    position: relative;
+    transition: width .2s;
+}
+.menu.activo .contenido-menu{
+    width: 60px;
+}
+
+.menu .menu-cont-boton{
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu .menu-boton:hover{
+    color: var(--menu-color);
+    scale: 1.2;
+}
+.menu .menu-boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+}
+
+.menu .cont-logo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 10%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--borde-color);
+}
+
+.menu .nombre-hotel{ 
+    margin: 0px 10px;
+    font-size: 20px; 
+}
+.menu.activo .nombre-hotel{
+    display: none;
+}
+
+.menu .cont-lista{
+    height: auto;
+    overflow: auto;
+}
+
+.menu ul{
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    list-style: none;
+    gap: 3px;
+}
+/* ------------ ITEM --------------- */
+
+.menu .menu-item{
+    overflow: hidden;
+    min-height: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.menu .menu-item.activo{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+a{
+    text-decoration: none;
+}
+
+.menu .menu-cont-item{
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    max-height: 40px;
+    padding: 5px;
+}
+.menu .menu-cont-item:hover{
+    color: var(--menu-color);
+    background-color: rgba(255, 255, 255, 0.289);
+}
+.menu .menu-icono{
+    font-size: 22px;
+    min-width: 30px;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+/* --------------------------- */
+.menu .item{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    font-size: 15px;
+    padding-left: 10px;
+}
+.menu.activo .item{
+    display: none;
+}
+
+.menu .flecha-item{
+    margin-left: auto;
+}
+
+/* -------- SUBMENU ------- */
+
+.menu .submenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 14px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+}
+
+.menu .submenu-icono {
+    font-size: 18px;
+    min-width: 30px;
+    justify-content: center;
+    display: flex;
+}
+
+.menu-item.activo .submenu {
+    height: 70px;
+}
+
+.menu .submenu-item {
+    padding: 5px 0;
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+
+.menu.activo .submenu-text {
+    display: none;
+}
+
+.cont-lista .submenu-item:hover {
+    color: var(--menu-color);
+    opacity: 1;
+    scale: 1.02;
+    background-color: rgba(255, 255, 255, 0.289);
+}
+
+.menu .flecha-item {
+    margin-left: auto;
+    transition: transform 0.5s;
+}
+
+.menu-item.activo .flecha-item {
+    transform: rotate(90deg);
+}
+
+/* -------- MENU USER------- */
+
+.menu .menu-icono-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    border: 2px solid grey;
+}
+.menu .menu-cont-user{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid grey;
+    padding-top: 10px;
+}
+.menu .menu-cont-label-user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+.menu.activo .menu-cont-label-user{
+    display: none;
+}
+.menu .menu-icono-exit{
+    font-size: 25px;
+    cursor: pointer;
+}
+.menu .menu-icono-exit:hover{
+    color: #E74C3C;
+}
+
+/* -------- FLECHAS MENU ------- */
+
+
+.cont-flecha-menu-abrir{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 20px;
+    cursor: pointer;
+}
+
+.menu .cont-flecha-menu-cerrar{
+    width: auto;
+    /* text-align: center; */
+    /* margin-top: auto; */
+}
+.menu .cont-flecha-menu-cerrar i{
+    cursor: pointer;
+}
+.menu .cont-flecha-menu-cerrar i:hover{
+    color: var(--menu-color);
+    scale: 1.2;
+}
+
+
+
+#boton-menu-cerrar, #boton-dis-cerrar{
+    font-size: 40px;
+    margin: 0;
+}
+
+/*-HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER--HEADER-*/
+
+.header .cont-busqueda{
+    display: flex;
+    /* justify-content: center; */
+}
+
+.header form{
+    display: flex;
+    align-items: center;
+
+}
+
+.header form i{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.header form input{
+    min-width: 10px;
+    height: 30px;
+    border-radius: 25px;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.header .cont-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+.header .menu-user{
+    width: 15px;
+    border: none;
+    margin-left: 10px;
+}
+
+.header .cont-user .icono-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid gray;
+    color: gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+/*------------------------------ habitaciones ---------------------------*/
+
+.main .data-habitaciones{
+    /* display: grid; */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;  
+    display: grid;
+    padding: 10px 20px 20px 20px;
+    overflow: auto;
+}
+
+.main .habitaciones.activo{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;  
+}
+
+.habitacion {
+    display: grid;
+    grid-template-rows: 70% 1fr;
+    min-height: 100px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: grey;
+    /* border: 2px solid grey; */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.habitacion .cont-numero-tipo{
+    display: grid;
+    grid-template-columns: 70% auto;
+}
+
+.habitacion .numero {
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.habitacion .tipo{
+    font-size: 0.7em;
+    padding-left: 10px;
+}
+
+.habitacion .icono{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    opacity: 0.4;
+}
+
+.habitacion .estado {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #ffffff51;
+
+
+}
+
+/*------color estado----------*/
+
+.habitacion.disponible{
+    border-color: #28B463;
+    background-color: #28B463;
+    color: white;
+}
+
+/* ---------- ocupada ---------- */
+
+.habitacion.ocupada{
+    border-color: #E74C3C;
+    background-color: #E74C3C;
+    color: white;
+}
+
+/* ---------- limpieza ---------- */
+
+.habitacion.limpieza{
+    background-color: #3498DB;
+    border-color: #3498DB;
+    color: white;
+}
+
+/* ---------- TODAS---------- */
+
+.habitacion.todas{
+    background-color: grey;
+    border-color: grey;
+    color: white;
+}
+
+/*------------------------ CONTENIDO-------------------------------------------*/
+
+.contenido {
+    height: 100%;
+    width: 100%;
+    background-color: var(--contenido-color);
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: auto 1fr;
+}
+
+.contenido .titulo-contenido {
+    background: var(--titulo-contenido-color);
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.contenido .cont-agregar{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.contenido .data{
+    /* height: 100%; */
+    overflow: auto;
+    font-size: 12px;
+}
+
+.contenido .boton-crear{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #28B463;
+    color: white;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.contenido .boton-crear:hover{
+    scale: 1.02;
+}
+
+.contenido .buscador-contenido{
+    min-height: 30px;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+/* ----- tabla ----- */
+
+.contenido table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    max-height: 200px;
+}
+
+.contenido th, td {
+    border: 1px solid var(--borde-tabla-color);
+    padding: 5px;
+    text-align: left;
+}
+
+.contenido th {
+    background-color: var(--tabla-color);
+    font-weight: bold;
+}
+
+.contenido tr:nth-child(even) {
+    background-color: var(--fila-tabla-color);
+}
+
+/* ----- barra-inferior ----- */
+
+.barra-inferior{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-top: 2px solid var(--borde-color);
+}
+.barra-inferior .cont-num-pagina{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
+}
+/* ----- botones-editar-eliminar ----- */
+
+.contenido .acciones{
+    width: 22px;
+    height: 22px;
+    color: white;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+
+}
+.contenido .acciones.editar{
+    background-color: #3175da;
+}
+.contenido .acciones.borrar{
+    background-color: red;
+}
+.contenido .acciones.seleccionar.hotel{
+    background-color: #28B463;
+}
+
+
+/*---------------------------------- DISPONIBLES -------------------------------------*/
+
+.contenido-dis{
+    height: 100%;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px 20px 10px;
+    gap: 10px;
+}
+.dis .titulo-dis{
+    text-align: center;
+    border-bottom: 2px solid grey;
+    color: grey;
+    padding-bottom: 10px;
+}
+
+.dis .cont-disponibles{
+    display: grid;
+    grid-template-rows: repeat(auto-fill,minmax(50px, 1fr));
+    gap: 10px;
+}
+
+.dis .hab-disp{
+    display: grid;
+    grid-template-columns: auto 20% 10%;
+    position: relative;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+.hab-disp .cont-datos-disp{
+    display: grid;
+    grid-template-rows: 60% auto;
+}
+
+.hab-disp .numero{
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.dis .tipo{
+    font-size: 0.5em;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.hab-disp .icono{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.dis .hab-disp .cont-flecha{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* ----------- flechas dis ---------- */
+
+.cont-flecha-dis-abrir{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 20px;
+}
+
+.dis .cont-flecha-dis-cerrar{
+    width: auto;
+    text-align: center;
+    margin-top: auto;
+}
+.dis .cont-flecha-dis-cerrar i{
+    cursor: pointer;
+    color: dimgrey;
+}
+.dis .cont-flecha-dis-cerrar i:hover{
+    color: gold;
+    scale: 1.2;
+}
+
+
+
+
+

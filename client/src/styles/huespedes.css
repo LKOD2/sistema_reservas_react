@@ -1,0 +1,132 @@
+.huespedes .estado{
+    background-color: grey;
+    padding: 1px 3px;
+    color: white;
+    width: fit-content;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.huespedes .estado.inactivo{
+    background-color: orange;
+}
+.huespedes .estado.desactivo{
+    background-color: red;
+}
+.huespedes .estado.activo{
+    background-color: #28b463;
+}
+
+
+.huespedes .select-filtros{
+    border-radius: 10px;
+}
+
+
+
+
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group label{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.cont-form-contenido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #111111bd;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+    
+}
+
+.cont-form-contenido.activo{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+}
+
+.form-contenido{
+    width: 350px;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(-100vh);
+    transition: transform .5s;
+    
+}
+.cont-form-contenido.activo .form-contenido{
+    transform: translateY(0);
+}
+
+
+.cont-titulo-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titulo-form{
+    color: #3175da;
+    font-size: 18px;
+
+}
+.icono-cerrar{
+    cursor: pointer;
+    color: grey;
+    font-size: 30px;
+}
+.icono-cerrar:hover{
+    color: red;
+}   
+
+.cont-tipo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    color: grey;
+    font-size: 14px;
+}
+
+.imput{
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+.imput.error{
+    border: 1px solid red;
+
+}
+
+.boton-submit{
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: #28b463;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+}
+
+.boton-submit:hover{
+    opacity: .8;
+    scale: 1.02;
+}

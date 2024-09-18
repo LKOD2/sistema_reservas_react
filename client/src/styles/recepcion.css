@@ -1,0 +1,218 @@
+.recepcion{
+    height: inherit;
+}
+
+.recepcion .imput[readonly] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-color: #ced4da;
+}
+
+.recepcion .cont-responsable{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/*------------------------ EXPANSION HUESPEDES -------------------------------*/
+
+/* .form-huesped{
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+.form-huesped.activo{
+    height: fit-content;
+} */
+
+.recepcion .form-huesped.resp{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+
+/*------------------------ CONTENIDO-------------------------------------------*/
+
+.recepcion .contenido{
+    max-height: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .contenido .titulo-contenido{
+    background-color: #1B2631;
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
+} */
+
+
+.recepcion .form-recepcion{
+    height: 100%;
+    overflow: auto;
+    /* display: flex; */
+    gap: 10px; 
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    /* grid-auto-flow: row; */
+}
+
+/* ---------- HUESPEDES -------------- */
+
+
+
+.recepcion .cont-datos-huespedes {
+    /* display: grid;
+    grid-auto-rows: auto; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
+    position: relative;
+    height: 100%;
+}
+
+.recepcion .detalle-huesped {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey; 
+    border-bottom: 6px solid var(--titulo-contenido-color);
+}
+
+.recepcion .cont-doble{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, auto));
+    gap: 20px;
+}
+
+
+ /* ---------- DATOS HABITACION -------------- */
+
+.recepcion .cont-datos-hab-res{
+    /* display: grid;
+    grid-template-rows: auto minmax(40px, 100%); */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.recepcion .rec-datos-habitacion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid grey;
+    border-bottom: 6px solid var(--titulo-contenido-color);
+    border-radius: 10px;
+    padding: 5px;
+}
+.rec-datos-hab-tabla tr, .rec-datos-hab-tabla th, .rec-datos-hab-tabla td{
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+}
+
+/* ---------- DATOS RESERVA -------------- */
+
+.recepcion .cont-form-reserva{
+    /* display: grid;
+    grid-template-rows: 30px 1fr; */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-bottom: 6px solid var(--titulo-contenido-color);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.recepcion .res-cont-form{
+    /* display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr)); */
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* --------------------------- TITULO ----------------------------- */
+
+.recepcion .cont-titulo-datos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    cursor: pointer;
+}
+.recepcion .titulo-datos{
+    color: #614BC3;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+.recepcion .imput{
+    height: 30px;
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+.recepcion .imput.error{
+    border: 1px solid red;
+
+}
+
+.recepcion .form-group{
+    display: flex;
+    flex-direction: column;
+}
+.recepcion .form-group label{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.recepcion .boton-submit{
+    min-height: 35px;
+    height: 35px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    background-color: #28b463;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+    right: 0;
+    margin-left: auto;
+}
+
+.recepcion .boton-submit:hover{
+    opacity: .8;
+    scale: 1.02;
+}
+
+.recepcion .textarea{
+    width: 100%;
+    min-height: 30px;
+    resize: vertical;
+    max-height: 100px;
+}
