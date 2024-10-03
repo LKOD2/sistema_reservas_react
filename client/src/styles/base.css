@@ -23,10 +23,9 @@ body{
     --color-fondo-menu:#512da8;
     --color-fuente-menu: white;
     --titulo-contenido-color: #512da8;
-    --menu-color: #2ECC71;
+    --menu-color: #512da8;
     --fondo-color: white;
     --fuente-color: auto;
-    
     --borde-color: grey;
     --borde-tabla-color: #ccc;
     --tabla-color: #f2f2f2;
@@ -52,7 +51,6 @@ body.dark {
 
 .gral {
     width: 100%;
-    /* min-width: 800px; */
     height: 100vh;
     min-height: 100vh;
     max-height: 100vh;
@@ -128,7 +126,6 @@ body.dark {
 /*---------------------- ocultar barras laterales ------------------*/
 
 .main{
-    display: flex;
     grid-area: main;
     overflow: auto;
     background-color: var(--contenido-color);
@@ -216,8 +213,6 @@ input:checked + .slider:before {
 
 /* ---------------------------------- */
 
-
-
 .menu .contenido-menu{
     width: 220px;
     display: flex;
@@ -231,23 +226,30 @@ input:checked + .slider:before {
     width: 60px;
 }
 
-.menu .menu-cont-boton{
-    font-size: 30px;
+/* --- BOTON MENU --- */
+
+.menu .boton-menu{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    min-height: 40px;
+    border-radius: 10px;
+    margin-right: auto;
 }
-.menu .menu-boton:hover{
+.menu .boton-menu:hover{
+    background-color: white;
     color: var(--menu-color);
-    scale: 1.2;
 }
-.menu .menu-boton{
+.menu .boton-menu-icono{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
 }
 
-.menu .cont-logo{
+/* --- LOGO --- */
+
+.menu .logo{
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -256,11 +258,11 @@ input:checked + .slider:before {
     border-bottom: 1px solid var(--borde-color);
 }
 
-.menu .nombre-hotel{ 
-    margin: 0px 10px;
+.menu .logo-text{ 
+    margin-left:10px;
     font-size: 20px; 
 }
-.menu.activo .nombre-hotel{
+.menu.activo .logo-text{
     display: none;
 }
 
@@ -269,30 +271,115 @@ input:checked + .slider:before {
     overflow: auto;
 }
 
-.menu ul{
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    list-style: none;
-    gap: 3px;
+.menu .menu-lista{
+    display: grid;
+    gap: 4px;
 }
+
 /* ------------ ITEM --------------- */
 
+a{
+    text-decoration: none;
+}
+
 .menu .menu-item{
+    min-height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.menu .menu-item.activo{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu .item{
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    height: 40px;
+    padding: 5px; 
+    overflow: hidden;
+    min-height: auto;
+    cursor: pointer;
+    gap: 10px;
+}
+.menu .item:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.menu .item.active{
+    background-color: white;
+    color: #512da8;
+}
+
+.menu .item-icono{
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    min-width: 30px;
+}
+
+.menu .item-text{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    font-size: 15px;
+    /* padding-left: 10px; */
+    text-wrap: nowrap;
+}
+
+.menu .submenu{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+}
+.menu-item.activo .submenu{
+    height: 80px;
+}
+.submenu-item {
+    display: flex;
+    padding: 5px;
+}
+.submenu-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.menu .submenu-icono {
+    font-size: 18px;
+    min-width: 30px;
+    justify-content: center;
+    display: flex;
+}
+
+
+.menu .flecha-item {
+    margin-left: auto;
+    transition: transform 0.5s;
+}
+
+.menu-item.activo .flecha-item {
+    transform: rotate(90deg);
+}
+
+.menu.activo .item-text{
+    display: none;
+}
+
+/* ------------------------------------ */
+
+/* .menu .menu-item{
     overflow: hidden;
     min-height: auto;
     cursor: pointer;
     border-radius: 10px;
-    transition: all 0.5s;
 }
 .menu .menu-item.activo{
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-a{
-    text-decoration: none;
-}
 
 .menu .menu-cont-item{
     display: flex;
@@ -304,18 +391,13 @@ a{
 .menu .menu-cont-item:hover{
     color: var(--menu-color);
     background-color: rgba(255, 255, 255, 0.289);
-}
-.menu .menu-icono{
-    font-size: 22px;
-    min-width: 30px;
-    justify-content: center;
-    display: flex;
-}
+} */
 
 
 
 /* --------------------------- */
-.menu .item{
+
+/* .menu .item{
     display: flex;
     align-items: center;
     flex: 1;
@@ -325,15 +407,13 @@ a{
 }
 .menu.activo .item{
     display: none;
-}
+} */
 
-.menu .flecha-item{
-    margin-left: auto;
-}
+
 
 /* -------- SUBMENU ------- */
 
-.menu .submenu {
+/* .menu .submenu {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 14px;
@@ -342,12 +422,7 @@ a{
     transition: height 0.5s ease;
 }
 
-.menu .submenu-icono {
-    font-size: 18px;
-    min-width: 30px;
-    justify-content: center;
-    display: flex;
-}
+
 
 .menu-item.activo .submenu {
     height: 70px;
@@ -360,6 +435,10 @@ a{
     padding: 5px;
 }
 
+.menu .submenu-item.activo{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 .menu.activo .submenu-text {
     display: none;
 }
@@ -370,19 +449,22 @@ a{
     scale: 1.02;
     background-color: rgba(255, 255, 255, 0.289);
 }
-
-.menu .flecha-item {
-    margin-left: auto;
-    transition: transform 0.5s;
-}
-
-.menu-item.activo .flecha-item {
-    transform: rotate(90deg);
-}
+ */
 
 /* -------- MENU USER------- */
 
-.menu .menu-icono-user{
+.menu .item-user{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid grey;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.menu .item-user-icono{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -392,15 +474,7 @@ a{
     border-radius: 50%;
     border: 2px solid grey;
 }
-.menu .menu-cont-user{
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    border-top: 1px solid grey;
-    padding-top: 10px;
-}
+
 .menu .menu-cont-label-user{
     display: flex;
     justify-content: space-between;
@@ -410,11 +484,11 @@ a{
 .menu.activo .menu-cont-label-user{
     display: none;
 }
-.menu .menu-icono-exit{
+.menu .item-icono-exit{
     font-size: 25px;
     cursor: pointer;
 }
-.menu .menu-icono-exit:hover{
+.menu .item-icono-exit:hover{
     color: #E74C3C;
 }
 
@@ -443,8 +517,6 @@ a{
     scale: 1.2;
 }
 
-
-
 #boton-menu-cerrar, #boton-dis-cerrar{
     font-size: 40px;
     margin: 0;
@@ -454,7 +526,6 @@ a{
 
 .header .cont-busqueda{
     display: flex;
-    /* justify-content: center; */
 }
 
 .header form{
@@ -501,107 +572,6 @@ a{
     font-size: 30px;
 }
 
-/*------------------------------ habitaciones ---------------------------*/
-
-.main .data-habitaciones{
-    /* display: grid; */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;  
-    display: grid;
-    padding: 10px 20px 20px 20px;
-    overflow: auto;
-}
-
-.main .habitaciones.activo{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;  
-}
-
-.habitacion {
-    display: grid;
-    grid-template-rows: 70% 1fr;
-    min-height: 100px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    position: relative;
-    color: grey;
-    /* border: 2px solid grey; */
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.habitacion .cont-numero-tipo{
-    display: grid;
-    grid-template-columns: 70% auto;
-}
-
-.habitacion .numero {
-    font-weight: bold;
-    font-size: 30px;
-    padding-left: 10px;
-}
-
-.habitacion .tipo{
-    font-size: 0.7em;
-    padding-left: 10px;
-}
-
-.habitacion .icono{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 45px;
-    opacity: 0.4;
-}
-
-.habitacion .estado {
-    font-size: 0.8em;
-    font-weight: bold;
-    color: white;
-    width: 100%;
-    height: 100%;
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    background-color: #ffffff51;
-
-
-}
-
-/*------color estado----------*/
-
-.habitacion.disponible{
-    border-color: #28B463;
-    background-color: #28B463;
-    color: white;
-}
-
-/* ---------- ocupada ---------- */
-
-.habitacion.ocupada{
-    border-color: #E74C3C;
-    background-color: #E74C3C;
-    color: white;
-}
-
-/* ---------- limpieza ---------- */
-
-.habitacion.limpieza{
-    background-color: #3498DB;
-    border-color: #3498DB;
-    color: white;
-}
-
-/* ---------- TODAS---------- */
-
-.habitacion.todas{
-    background-color: grey;
-    border-color: grey;
-    color: white;
-}
 
 /*------------------------ CONTENIDO-------------------------------------------*/
 

@@ -1,86 +1,75 @@
-import React from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
-export function Inicio (){
-    return(
-        
-        <div class="contenido">
+import "../styles/inicio.css";
 
-            <div class="titulo-contenido">
-                <i class='bx bxs-home-alt-2'></i>
-                <h4>Inicio</h4>
+export function Inicio() {
+  return (
+    <div className="contenido">
+      <div className="titulo-contenido">
+        <i className='bx bxs-home-alt-2'></i>
+        <h4>Inicio</h4>
+      </div>
+
+      <div className="inicio">
+        <div className="inicio-grid">
+          <Link to={'/disponibles'} state={'disponibles'}>
+            <div className="widget disponible">
+              <div className="estado">
+                <p>Disponibles</p>
+              </div>
+              <div className="cont-numero-icono">
+                <div className="numero">300</div>
+                <div className="icono">
+                  <i className='bx bx-hotel'></i>
+                </div>
+              </div>
             </div>
+          </Link>
 
-            <div class="data-habitaciones" id="habitaciones-container">
-                <div class="habitacion disponible">
-                    <div class="cont-numero-tipo">
-                        <div>
-                            <div class="numero">1</div>
-                        </div>
-                        <div class="icono">
-                            <i class='bx bxs-bed'></i>
-                        </div>
-                    </div>
-                    
-                    <div class="estado">
-                        <p>Disponibles</p>
-                        <i class='bx bxs-chevron-right'></i>
-                    </div>
-                    
+          <Link to={'/ocupadas'} state={'ocupadas'}>
+            <div className="widget ocupada">
+              <div className="estado">
+                <p>Ocupadas</p>
+              </div>
+              <div className="cont-numero-icono">
+                <div className="numero">1</div>
+                <div className="icono">
+                  <i className='bx bx-hotel'></i>
                 </div>
-                <div class="habitacion ocupada">
-                    <div class="cont-numero-tipo">
-                        <div>
-                            <div class="numero">1</div>
-                        </div>
-                        <div class="icono">
-                            <i class='bx bxs-bed'></i>
-                        </div>
-                    </div>
-                    
-                    <div class="estado">
-                        <p>Ocupadas</p>
-                        <i class='bx bxs-chevron-right'></i>
-                    </div>
-                    
-                </div>
-                <div class="habitacion limpieza">
-                    <div class="cont-numero-tipo">
-                        <div>
-                            <div class="numero">1</div>
-                        </div>
-                        <div class="icono">
-                            <i class='bx bxs-bed'></i>
-                        </div>
-                    </div>
-                    
-                    <div class="estado">
-                        <p>Limpieza</p>
-                        <i class='bx bxs-chevron-right'></i>
-                    </div>
-                    
-                </div>
-                <div class="habitacion todas">
-                    <div class="cont-numero-tipo">
-                        <div>
-                            <div class="numero">1</div>
-                        </div>
-                        <div class="icono">
-                            <i class='bx bxs-bed'></i>
-                        </div>
-                    </div>
-                    
-                    <div class="estado">
-                        <p>Todas</p>
-                        <i class='bx bxs-chevron-right'></i>
-                    </div>
-                    
-                </div>
-
+              </div>
             </div>
+          </Link>
 
+          <Link to={'/limpieza'} state={'limpieza'}>
+            <div className="widget limpieza">
+              <div className="estado">
+                <p>Limpieza</p>
+              </div>
+              <div className="cont-numero-icono">
+                <div className="numero">20</div>
+                <div className="icono">
+                  <i className='bx bx-hotel'></i>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          <Link to={'/todas'} state={'todas'}>
+            <div className="widget todas">
+              <div className="estado">
+                <p>Todas</p>
+              </div>
+              <div className="cont-numero-icono">
+                <div className="numero">100</div>
+                <div className="icono">
+                  <i className='bx bx-hotel'></i>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
-
-
-    )
+      </div>
+    </div>
+  );
 }
-

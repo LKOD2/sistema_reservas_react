@@ -1,0 +1,84 @@
+
+.inicio .inicio-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;  
+    padding: 10px;
+    overflow: auto;
+}
+
+.inicio .widget.activo{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;  
+}
+
+.widget {
+    display: grid;
+    grid-template-rows: auto auto;
+    min-height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: white;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.widget .cont-numero-icono{
+    display: grid;
+    grid-template-columns: 70% auto;
+}
+
+.widget .numero {
+    font-weight: 400;
+    font-size: 45px;
+}
+.widget .icono{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    opacity: 0.4;
+}
+
+.widget .estado {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*------color estado----------*/
+
+.widget.disponible{
+    border-color: #28B463;
+    background-color: #28B463;
+    color: white;
+}
+
+/* ---------- ocupada ---------- */
+
+.widget.ocupada{
+    border-color: #E74C3C;
+    background-color: #E74C3C;
+    color: white;
+}
+
+/* ---------- limpieza ---------- */
+
+.widget.limpieza{
+    background-color: #3498DB;
+    border-color: #3498DB;
+    color: white;
+}
+
+/* ---------- TODAS---------- */
+
+.widget.todas{
+    background-color: grey;
+    border-color: grey;
+    color: white;
+}
