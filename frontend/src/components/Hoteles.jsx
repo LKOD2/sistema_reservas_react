@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../styles/hoteles.css'
 
 export function Hoteles () {
-    const hoteles = []
+    const hoteles = [{nombre:'warriot', direccion:'nose', estado: 'activo'}]
     const [crearModalVisible, setCrearModalVisible] = useState(false);
     const [editarModalVisible, setEditarModalVisible] = useState(false);
     const [hotelAEditar, setHotelAEditar] = useState(null);
@@ -97,7 +97,7 @@ const FormularioCrearHotel = ({funcion}) => {
       };
 
     return (
-        <dialog ref={formCrear} className="cont-form-contenido activo">
+        <dialog ref={formCrear} className="modal-form">
             <form className="form-contenido" method="POST">
                 <div className="cont-titulo-form">
                     <h3 className="titulo-form">Crear hotel</h3>
@@ -140,7 +140,7 @@ const FormularioEditarHotel = ({ hotel, funcion }) => {
       };
 
     return(
-        <dialog ref={formEdit} className="cont-form-contenido">
+        <dialog ref={formEdit} className="modal-form activo">
             <form className="form-contenido" method="POST">
                 <div className="cont-titulo-form">
                     <h3 className="titulo-form">Editar hotel</h3>

@@ -2,7 +2,7 @@
 import './styles/base.css';
 import { BrowserRouter as Router, Route, Routes, useNavigate,Navigate } from "react-router-dom";
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 import Base from './components/Base';
 import {Inicio} from './components/Inicio';
@@ -19,6 +19,8 @@ import { Hoteles } from './components/Hoteles';
 
 function App() {
 
+
+
   return (
     <Router>
       <Routes>
@@ -32,15 +34,13 @@ function App() {
           <Route path='limpieza' element={<Gestion dato={'limpieza'} />}>
             <Route path='liberar' element={<Limpieza />} />
           </Route>
-
           <Route path='todas' element={<Gestion dato={'todas'} />}/>
-          
-          
-
           <Route path='recepcion' element={<Recepcion />} />
           <Route path='salida' element={<Salida />} />
 
+          <Route path='tienda' element={<Gestion dato={'venta'} />} />
           <Route path='vender' element={<Vender />} />
+          
           <Route path='productos' element={<Productos />} />
           <Route path='habitaciones' element={<Habitaciones />} />
           <Route path='huespedes' element={<Huespedes />} />

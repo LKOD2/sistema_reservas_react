@@ -7,7 +7,7 @@ function Producto({ producto, agregarProducto }) {
     <div className="producto">
       <h4>{producto.nombre}</h4>
       <p>Precio: ${producto.precio}</p>
-      <button onClick={() => agregarProducto(producto)}>Agregar</button>
+      <button className='producto-boton' onClick={() => agregarProducto(producto)}>Agregar</button>
     </div>
   );
 }
@@ -76,32 +76,33 @@ export function Vender() {
           </div>
         </div>
         
-          <div className="productos">
-            <h3>Productos</h3>
-            {productos.map((producto) => (
-              <Producto key={producto.id} producto={producto} agregarProducto={agregarProducto} />
-            ))}
-          </div>
+        <div className="productos">
+          <h3>Productos</h3>
+          {productos.map((producto) => (
+            <Producto key={producto.id} producto={producto} agregarProducto={agregarProducto} />
+          ))}
+        </div>
 
-          <div className="carrito">
-            <h3>Carrito</h3>
-            <ul>
-              {productosSeleccionados.map((producto, index) => (
-                <li key={index}>
-                  {producto.nombre} - ${producto.precio}
-                  <button onClick={() => agregarProducto(producto)}>Quitar</button>
-                </li>
-              ))}
-            </ul>
-            <h4>Total: ${calcularTotal()}</h4>
-            <button onClick={realizarVenta} className="boton-submit">
-              Realizar Venta
-            </button>
+        <div className="carrito">
+          <div className='carrito-titulo'>
+            <i class='bx bxs-cart'></i>
+            <p>Carrito</p>
           </div>
         
-
-
-
+          <ul className='carrito-lista'>
+            {productosSeleccionados.map((producto, index) => (
+              <li key={index}>
+                {producto.nombre} - ${producto.precio}
+                <button onClick={() => agregarProducto(producto)}>Quitar</button>
+              </li>
+            ))}
+          </ul>
+          <h4>Total: ${calcularTotal()}</h4>
+          <button onClick={realizarVenta} className="boton-venta">
+            Realizar Venta
+          </button>
+        </div>
+      
       </div>
 
     </div>

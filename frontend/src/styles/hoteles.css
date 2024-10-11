@@ -1,0 +1,93 @@
+
+.modal-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    gap: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-form::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-contenido{
+    min-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+}
+
+.cont-titulo-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.icono-cerrar{
+    cursor: pointer;
+    color: grey;
+    font-size: 30px;
+}
+.icono-cerrar:hover{
+    color: red;
+} 
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group .label-input{
+    font-size: 12px;
+    font-weight: bold;
+}
+.form-group .label-error{
+    font-size: 12px;
+    color: red;
+
+}
+
+.imput{
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+
+.label.error{
+    border: 1px solid red;
+
+}
+
+.opcion{
+    cursor: pointer;
+}
+
+.boton-submit{
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: #28b463;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+}
+
+.boton-submit:hover{
+    opacity: .8;
+    scale: 1.02;
+}
+
+

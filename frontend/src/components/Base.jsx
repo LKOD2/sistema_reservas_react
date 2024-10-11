@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { Gestion } from "./Gestion";
 
@@ -8,14 +8,28 @@ const Base = () => {
     const [submenuConfig, setSubmenuConfig] = useState(false);
     const [submenuVentas, setSubmenuVentas] = useState(false);
 
-    const [seleccionado, setSeleccionado] = useState(false)
+    const [darkMode, setDarkMode] = useState(()=>{
+        const tema = localStorage.getItem('darkMode');
+        return tema ? JSON.parse(tema) : false;
+    });
 
+    useEffect(()=>{
+        if (darkMode){
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark')
+        }
+        
+        localStorage.setItem('darkMode', JSON.stringify(darkMode))
+    }, [darkMode])
+    
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+    
     const controlMenu = () => {
         setMenu(!menu);
-    };
-
-    const darkMode = () => {
-        document.body.classList.toggle('dark');
     };
 
     const toggleSubmenu = (section) => {
@@ -34,16 +48,6 @@ const Base = () => {
         }
     };
 
-    const seleccion = (valor) =>{
-        setSeleccionado(valor);
-    }
-
-    const [section, setSection] = useState(false);
-
-    const nose = () =>{
-        setSection(!section)
-    }
-
     return (
         <div className="gral">
 
@@ -51,9 +55,9 @@ const Base = () => {
 
             <div className="header">
                 <div className="cont-busqueda">
-                    <form action="#">
+                    {/* <form action="#">
                         <input type="search" placeholder="Buscar" />
-                    </form>
+                    </form> */}
                 </div>
 
                 <div className="cont-user">
@@ -84,9 +88,11 @@ const Base = () => {
                     <div className="cont-lista">
                         <ul className="menu-lista">
                             {/* ----------------------------------------- */}
-
-                            {/* <li className="menu-item">
+                            {/*
+                             <li className="menu-item">
+                                
                                 <NavLink to='/inicio' className="item">
+                                    <div className="marca"></div>
                                     <i className='bx bx-home-alt-2 item-icono'></i>
                                     <p className="item-text">prueba</p>
                                 </NavLink>
@@ -118,6 +124,7 @@ const Base = () => {
 
                             <li className="menu-item">
                                 <NavLink to='/inicio' className="item">
+                                    <div className="selector"></div>
                                     <i className='bx bx-home-alt-2 item-icono'></i>
                                     <div className="item-text">
                                         <p>Inicio</p>
@@ -127,6 +134,7 @@ const Base = () => {
 
                             <li className={`menu-item ${submenuGestion ? 'activo' : ''}`}>
                                 <div className="item" onClick={() => toggleSubmenu('gestion')}>
+                                    <div className="selector"></div>
                                     <span className="material-symbols-outlined item-icono">check_in_out</span>
                                     <div className="item-text">
                                         <p>Gestion</p>
@@ -136,12 +144,14 @@ const Base = () => {
                                 <ul className="submenu">
                                     <li>
                                         <NavLink to={'/disponibles'} className="item">
+                                            <div className="selector"></div>
                                             <i className='bx bx-cart-add submenu-icono'></i>
                                             <p className="item-text">Recepción</p>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to={'/ocupadas'} className="item">
+                                            <div className="selector"></div>
                                             <i className='bx bx-cart-add submenu-icono'></i>
                                             <p className="item-text">Salida</p>
                                         </NavLink>
@@ -151,6 +161,7 @@ const Base = () => {
 
                             <li className={`menu-item ${submenuVentas ? 'activo' : ''}`}>
                                 <div className="item" onClick={() => toggleSubmenu('ventas')}>
+                                    <div className="selector"></div>
                                     <i className='bx bx-store-alt item-icono'></i>
                                     <div className="item-text">
                                         <p>Tienda</p>
@@ -159,13 +170,15 @@ const Base = () => {
                                 </div>
                                 <ul className="submenu">
                                     <li>
-                                        <NavLink to={'/vender'} className="item" onClick={ ()=> seleccion('vender')}>
+                                        <NavLink to={'/tienda'} className="item">
+                                            <div className="selector"></div>
                                             <i className='bx bx-cart-add submenu-icono'></i>
                                             <p className="item-text">Vender</p>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink to={'/productos'} className="item">
+                                            <div className="selector"></div>
                                             <i className='bx bx-barcode submenu-icono'></i>
                                             <p className="item-text">Productos</p>
                                         </NavLink>
@@ -175,6 +188,7 @@ const Base = () => {
 
                             <li className="menu-item">
                                 <NavLink to={'/habitaciones'} className="item">
+                                    <div className="selector"></div>
                                     <span className="material-symbols-outlined item-icono">bedroom_parent</span>
                                     <div className="item-text">
                                         <p>Habitaciones</p>
@@ -184,6 +198,7 @@ const Base = () => {
 
                             <li className="menu-item">
                                 <NavLink to={'/huespedes'} className="item">
+                                    <div className="selector"></div>
                                     <span className="material-symbols-outlined item-icono">hotel</span>
                                     <div className="item-text">
                                         <p>Huespedes</p>
@@ -192,6 +207,7 @@ const Base = () => {
                             </li>
                             <li className="menu-item">
                                 <NavLink to='/usuarios' className="item">
+                                    <div className="selector"></div>
                                     <i className='bx bx-group item-icono'></i>
                                     <div className="item-text">
                                         <p>Usuarios</p>
@@ -201,6 +217,7 @@ const Base = () => {
 
                             <li className={`menu-item ${submenuConfig ? 'activo' : ''}`}>
                                 <div className="item" onClick={() => toggleSubmenu('configuracion')}>
+                                    <div className="selector"></div>
                                     <i className='bx bx-cog item-icono'></i>
                                     <div className="item-text">
                                         <p>Configuración</p>
@@ -210,6 +227,7 @@ const Base = () => {
                                 <ul className="submenu">
                                     <li>
                                         <NavLink to={'/hoteles'} className="item">
+                                            <div className="selector"></div>
                                             <i className='bx bx-group item-icono'></i>
                                             <p className="item-text">Hoteles</p>
                                         </NavLink>
@@ -218,16 +236,20 @@ const Base = () => {
                             </li>
 
                             <li className="menu-item">
-                                <div className="item">
+                                <label htmlFor="checkbox" className="item">
                                     <div className="item-text">
-                                        <i class='bx bx-moon item-icono'></i>
+                                        <i className='bx bx-moon item-icono'></i>
                                         <p>Modo Oscuro</p>
                                     </div>
-                                    <label className="switch">
-                                        <input type="checkbox" onChange={darkMode} />
-                                        <span className="slider"></span>
-                                    </label>
-                                </div>
+                                    <div className="cont-togle">
+                                        <input className="checkbox" type="checkbox" id="checkbox" 
+                                            checked={darkMode}
+                                            onChange={toggleDarkMode} />
+                                        <label className="togle" for="checkbox">
+                                            <span className="circulo"></span>
+                                        </label>
+                                    </div>
+                                </label>
                             </li>
                         </ul>
                     </div>

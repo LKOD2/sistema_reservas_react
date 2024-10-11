@@ -8,10 +8,7 @@ export function Gestion({dato}) {
 
     const location = useLocation();
     const ruta = location.state;
-
-    console.log(ruta);
     
-
     const [habitaciones, setHabitaciones] = useState([])
     
     const navigate = useNavigate();
@@ -23,7 +20,7 @@ export function Gestion({dato}) {
                 { ID: 1, estado: 'disponible', numero: 10, tipo: 'simple' },
                 { ID: 2, estado: 'disponible', numero: 20, tipo: 'doble' }
             ]);
-        } else if (dato === 'ocupadas') {
+        } else if (dato === 'ocupadas' || dato === 'venta') {
             setHabitaciones([
                 { ID: 3, estado: 'ocupada', numero: 200, tipo: 'simple' },
                 { ID: 4, estado: 'ocupada', numero: 201, tipo: 'triple' }
@@ -47,7 +44,9 @@ export function Gestion({dato}) {
             navigate('/salida', { state: { habitacion } })
         }else if (dato === 'limpieza') {
             navigate('liberar', { state: { habitacion } })
-        } else {
+        }else if (dato === 'venta') {
+            navigate('/vender', { state: { habitacion } })
+        }else {
             setHabitaciones([]);
         }
         
@@ -58,12 +57,11 @@ export function Gestion({dato}) {
     return (
         <div className="contenido">
             <div className="titulo-contenido">
-                <h4>{dato}</h4>
+                <h4 style={{ textTransform: 'capitalize' }}>{dato}</h4>
             </div>
 
             <div className="data-habitaciones">
                 {habitaciones.map(habitacion => (
-                    // <Link to={'/recepcion/form'}>
                         <div
                             className={`habitacion ${habitacion.estado}`}
                             key={habitacion.ID}
@@ -92,7 +90,6 @@ export function Gestion({dato}) {
                                 <i className="bx bxs-chevron-right"></i>
                             </div>
                         </div>
-                    // </Link>
                 ))}
             </div>
             <Outlet/>

@@ -57,7 +57,7 @@ body.dark {
     position: relative;
     display: grid;
     grid-template-columns: auto minmax(400px, 1fr) auto;
-    grid-template-rows: minmax(10%, 80px) auto;
+    grid-template-rows: minmax(10%, 50px) auto;
     gap: 10px;
     grid-template-areas:    "menu header header"
                             "menu main main";
@@ -80,13 +80,13 @@ body.dark {
     grid-auto-columns: auto auto;
     align-items: center;
     justify-content: space-between;
-    border-radius: 10px;
     grid-area: header;
     padding: 0px 30px;
     background-color: var(--contenido-color);
 }
 
 /*---------------------- menú ------------------*/
+
 .menu {
     background: var(--color-fondo-menu);          
     position: relative;
@@ -94,6 +94,15 @@ body.dark {
     color: var(--color-fuente-menu);
     display: flex;
     overflow: hidden;
+}
+
+/*---------------------- MAIN ------------------*/
+
+.main{
+    grid-area: main;
+    overflow: hidden;
+    background-color: var(--contenido-color);
+    position: relative;
 }
 
 /*---------------------- dis ------------------*/
@@ -121,16 +130,7 @@ body.dark {
     } */
 }
 
-
-
 /*---------------------- ocultar barras laterales ------------------*/
-
-.main{
-    grid-area: main;
-    overflow: auto;
-    background-color: var(--contenido-color);
-    position: relative;
-}
 
 .menu-hidden .cont-flecha-menu-abrir{
     display: flex;
@@ -152,64 +152,59 @@ body.dark {
 /*-MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU-*/
 /*-MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU--MENU-*/
 
-/* The switch - the box around the slider */
-.switch {
-    display: block;
-    --width-of-switch: 40px;
-    --height-of-switch: 18px;
-    /* size of sliding icon -- sun and moon */
-    --size-of-icon: 12px;
-    /* it is like a inline-padding of switch */
-    --slider-offset: 0.3em;
+
+
+.togle {
     position: relative;
-    width: var(--width-of-switch);
-    height: var(--height-of-switch);
-}
-
-    /* Hide default HTML checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.slider {
-    position: absolute;
+    background-color: #cecece;
+    border-radius: 25px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #f4f4f5;
-    transition: .4s;
-    border-radius: 30px;
+    transition: background-color 0.3s ease;
 }
 
-.slider:before {
+.togle::before {
+    content: '🌙';
     position: absolute;
-    content: "";
-    height: var(--size-of-icon,1.4em);
-    width: var(--size-of-icon,1.4em);
-    border-radius: 20px;
-    left: var(--slider-offset,0.3em);
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
-    ;
-    transition: .4s;
+    left: 21px;
+    font-size: 12px;
+    color: #222;
+    transition: all 0.3s ease;
 }
 
-input:checked + .slider {
-    background-color: #303136;
+.checkbox {
+    display: none; 
 }
 
-input:checked + .slider:before {
-    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
-    background: #303136;
-    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+.circulo {
+    position: absolute;
+    background-color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    left: 2px;
+    top: 2px;
+    transition: all 0.3s ease;
 }
+
+.checkbox:checked + .togle .circulo {
+    background-color: black;
+    left: 22px;
+}
+
+.checkbox:checked + .togle {
+    background-color: #222;
+}
+
+.checkbox:checked + .togle::before {
+    content: '☀️';
+    left: 2px;
+    color: #fdd835;
+}
+
 
 /* ---------------------------------- */
 
@@ -237,8 +232,8 @@ input:checked + .slider:before {
     margin-right: auto;
 }
 .menu .boton-menu:hover{
-    background-color: white;
-    color: var(--menu-color);
+    background-color: rgba(255, 255, 255, 0.3);
+    /* color: var(--menu-color); */
 }
 .menu .boton-menu-icono{
     display: flex;
@@ -253,9 +248,10 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     cursor: pointer;
-    height: 10%;
-    margin-bottom: 20px;
+    /* height: 10%; */
+    margin-bottom: 10px;
     border-bottom: 1px solid var(--borde-color);
+    padding: 5px 0 10px 0;
 }
 
 .menu .logo-text{ 
@@ -278,6 +274,20 @@ input:checked + .slider:before {
 
 /* ------------ ITEM --------------- */
 
+.selector{
+    background-color: white;
+    height: 0px;
+    width: 5px;
+    position: absolute;
+    transition: all .2s;
+}
+.menu .item:hover .selector{
+    height: 100%;
+}
+.menu .item.active .selector{
+    height: 100%;
+}
+
 a{
     text-decoration: none;
 }
@@ -295,11 +305,12 @@ a{
 }
 
 .menu .item{
+    position: relative;
     display: flex;
     align-items: center;
     min-height: 40px;
     height: 40px;
-    padding: 5px; 
+    /* padding: 5px;  */
     overflow: hidden;
     min-height: auto;
     cursor: pointer;
@@ -309,7 +320,7 @@ a{
     background-color: rgba(255, 255, 255, 0.3);
 }
 .menu .item.active{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
     color: #512da8;
 }
 
@@ -317,7 +328,7 @@ a{
     display: flex;
     justify-content: center;
     font-size: 22px;
-    min-width: 30px;
+    min-width: 40px;
 }
 
 .menu .item-text{
@@ -326,8 +337,8 @@ a{
     flex: 1;
     justify-content: space-between;
     font-size: 15px;
-    /* padding-left: 10px; */
     text-wrap: nowrap;
+
 }
 
 .menu .submenu{
@@ -348,16 +359,17 @@ a{
     background-color: rgba(255, 255, 255, 0.2);
 }
 .menu .submenu-icono {
-    font-size: 18px;
-    min-width: 30px;
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    font-size: 18px;
+    min-width: 40px;
 }
 
 
 .menu .flecha-item {
     margin-left: auto;
     transition: transform 0.5s;
+    padding-right: 5px;
 }
 
 .menu-item.activo .flecha-item {
@@ -367,89 +379,6 @@ a{
 .menu.activo .item-text{
     display: none;
 }
-
-/* ------------------------------------ */
-
-/* .menu .menu-item{
-    overflow: hidden;
-    min-height: auto;
-    cursor: pointer;
-    border-radius: 10px;
-}
-.menu .menu-item.activo{
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-
-.menu .menu-cont-item{
-    display: flex;
-    align-items: center;
-    min-height: 40px;
-    max-height: 40px;
-    padding: 5px;
-}
-.menu .menu-cont-item:hover{
-    color: var(--menu-color);
-    background-color: rgba(255, 255, 255, 0.289);
-} */
-
-
-
-/* --------------------------- */
-
-/* .menu .item{
-    display: flex;
-    align-items: center;
-    flex: 1;
-    justify-content: space-between;
-    font-size: 15px;
-    padding-left: 10px;
-}
-.menu.activo .item{
-    display: none;
-} */
-
-
-
-/* -------- SUBMENU ------- */
-
-/* .menu .submenu {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-size: 14px;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s ease;
-}
-
-
-
-.menu-item.activo .submenu {
-    height: 70px;
-}
-
-.menu .submenu-item {
-    padding: 5px 0;
-    display: flex;
-    gap: 10px;
-    padding: 5px;
-}
-
-.menu .submenu-item.activo{
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.menu.activo .submenu-text {
-    display: none;
-}
-
-.cont-lista .submenu-item:hover {
-    color: var(--menu-color);
-    opacity: 1;
-    scale: 1.02;
-    background-color: rgba(255, 255, 255, 0.289);
-}
- */
 
 /* -------- MENU USER------- */
 
@@ -506,8 +435,7 @@ a{
 
 .menu .cont-flecha-menu-cerrar{
     width: auto;
-    /* text-align: center; */
-    /* margin-top: auto; */
+
 }
 .menu .cont-flecha-menu-cerrar i{
     cursor: pointer;
@@ -542,7 +470,7 @@ a{
 .header form input{
     min-width: 10px;
     height: 30px;
-    border-radius: 25px;
+    border-radius: 10px;
     padding-left: 20px;
     margin-left: 10px;
 }
@@ -553,6 +481,7 @@ a{
     justify-content: center;
     color: gray;
 }
+
 .header .menu-user{
     width: 15px;
     border: none;
@@ -622,7 +551,7 @@ a{
 
 .contenido .buscador-contenido{
     min-height: 30px;
-    border-radius: 15px;
+    border-radius: 10px;
     padding-left: 10px;
 }
 
