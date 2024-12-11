@@ -1,4 +1,4 @@
-.sal-data .imput[readonly] {
+s.alida .imput[readonly] {
     background-color: #e9ecef;
     color: #6c757d;
     cursor: not-allowed;
@@ -8,103 +8,124 @@
 
 /*------------------------ CONTENIDO-------------------------------------------*/
 
-.sal-data{
-padding: 10px;
-display: grid;
-gap: 10px;
+.salida {
+    padding: 10px;
+    display: grid;
+    gap: 10px;
+    overflow: auto;
 }
 
-.sal-data .sal-cont-datos{
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 10px;
+.salida .sal-cont-datos {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
 }
 
-.sal-data .sal-cont-inputs{
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-width: 100%;
-gap: 10px;
+.salida .sal-cont-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    gap: 10px;
 }
 
-.sal-datos-huesped, .sal-datos-habitacion, .sal-datos-reserva, .sal-datos-pagos {
-width: 100%;
-display: flex;
-flex-direction: column;
-gap: 15px;
-padding: 10px;
-border-radius: 10px;
-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-border: 1px solid grey;
-border-bottom: 5px solid #614BC3;
+.sal-datos-huesped,
+.sal-datos-habitacion,
+.sal-datos-reserva {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+    border-bottom: 5px solid #614BC3;
+    width: 300px;
+    flex-grow: 1;
+    flex-basis: 200;
+}
+
+.sal-datos-pagos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+    border-bottom: 5px solid #614BC3;
 }
 
 /* ---------- total a pagar --------------- */
 
-.sal-data .sal-form-salida{
-display: grid;
-gap: 10px;
-}
-.sal-data .cont-doble-boton{
-display: flex;
-justify-content: right;
-align-items: center;
-gap: 10px;
-padding: 10px;
-border-radius: 10px;
-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-border: 1px solid grey;
-
-}
-.sal-data .form-group-total{
-display: flex;
-justify-content: right;
-margin-left: auto;
-background-color: rgb(168, 168, 168);
-font-size: 12px;
-border-radius: 10px;
-align-items: center;
-gap: 10px;
-padding-left: 10px;
+.salida .sal-form-salida {
+    display: grid;
+    gap: 10px;
 }
 
-.sal-data .res-cont-form {
-gap: 10px;
-display: flex;
-flex-direction: column;
+.salida .cont-doble-boton {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+
 }
 
-.sal-data .cont-titulo-form {
-display: flex;
-align-items: center;
-justify-content: space-between;
+.salida .form-group-total {
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+    background-color: rgb(168, 168, 168);
+    font-size: 12px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
 }
 
-.sal-data .titulo-form {
-color: #614BC3;
-font-size: 12px;
-font-weight: bold;
+.salida .res-cont-form {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.sal-data .imput {
-height: 30px;
-width: auto;
-border-radius: 10px;
-border: 1px solid grey;
-padding: 0 10px;
+.salida .cont-titulo-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.sal-data .form-group {
-display: flex;
-flex-direction: column;
+.salida .titulo-form {
+    color: #614BC3;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.sal-data .form-group label {
-font-size: 11px;
-font-weight: bold;
+.salida .imput {
+    height: 30px;
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
 }
 
-.sal-data .boton-submit{
+.salida .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.salida .form-group label {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.salida .boton-submit {
     min-height: 30px;
     height: 30px;
     width: 150px;
@@ -119,21 +140,43 @@ font-weight: bold;
     /* margin-left: auto; */
 }
 
-.sal-data .boton-submit:hover{
+.salida .boton-submit:hover {
     opacity: .8;
     scale: 1.02;
 }
 
 
-.sal-datos-huesped table, .sal-datos-habitacion table, .sal-datos-reserva table {
-width: 100%;
-border-collapse: collapse;
-font-size: 12px;
+
+.salida table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
 }
 
-.sal-datos-huesped th, .sal-datos-habitacion th, .sal-datos-reserva th,
-.sal-datos-huesped td, .sal-datos-habitacion td, .sal-datos-reserva td {
-border: none;
-padding: 5px;
-text-align: left;
+.sal-datos-huesped th,
+.sal-datos-habitacion th,
+.sal-datos-reserva th,
+.sal-datos-huesped td,
+.sal-datos-habitacion td,
+.sal-datos-reserva td {
+    border: none;
+    padding: 5px;
+    text-align: left;
+}
+
+
+.salida .estado{
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    padding: 0 5px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.salida .estado.pendiente{
+    background-color: red;
+}
+
+.salida .estado.pagado{
+    background-color: green;
 }

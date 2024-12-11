@@ -14,11 +14,6 @@ a{
 
 /* -MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO--MODO OSCURO- */
 
-
-input, select{
-    background-color: var(--input-color);
-}
-
 body{
     --color-fondo-menu:#512da8;
     --color-fuente-menu: white;

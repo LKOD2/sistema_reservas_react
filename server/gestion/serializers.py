@@ -22,3 +22,19 @@ class HuespedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Huesped
         fields = '__all__'
+
+class VentaReservaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VentaReserva
+        fields = '__all__'
+
+class ReservaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reserva
+        fields = '__all__'
+
+
+class VentaProductoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VentaProducto
+        fields = '__all__'

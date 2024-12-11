@@ -15,6 +15,24 @@
     gap: 5px;
 }
 
+.recepcion .cont-doble-boton {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+}
+.recepcion .form-group-total {
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+    background-color: rgb(168, 168, 168);
+    font-size: 12px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+}
+
 /*------------------------ EXPANSION HUESPEDES -------------------------------*/
 
 /* .form-huesped{
@@ -202,7 +220,7 @@
     cursor: pointer;
     outline: none;
     right: 0;
-    margin-left: auto;
+    /* margin-left: auto; */
 }
 
 .recepcion .boton-submit:hover{

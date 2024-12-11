@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { Gestion } from "./Gestion";
+import { Gestion } from "../Gestion";
+import { Item } from "./Item";
 
 const Base = ({logout}) => {
 
     const [hotel, setHotel] = useState(JSON.parse(localStorage.getItem("hotel")))
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     const [menu, setMenu] = useState(false);
     const [submenuGestion, setSubmenuGestion] = useState(false);
     const [submenuConfig, setSubmenuConfig] = useState(false);
@@ -69,7 +70,6 @@ const Base = ({logout}) => {
         
     useEffect(() => {
         const userLocal = localStorage.getItem('user');
-        console.log('use userlocal', userLocal);
     
         if (userLocal) {
             const parsedUser = JSON.parse(userLocal);
@@ -120,98 +120,124 @@ const Base = ({logout}) => {
                     <div className="cont-lista">
                         <ul className="menu-lista">
 
-                            <li className="menu-item">
-                                <NavLink to='/inicio' className="item">
-                                    <div className="selector"></div>
-                                    <i className='bx bx-home-alt-2 item-icono'></i>
-                                    <div className="item-text">
-                                        <p>Inicio</p>
-                                    </div>
-                                </NavLink>
-                            </li>
-
-                            <li className={`menu-item ${submenuGestion ? 'activo' : ''}`}>
-                                <div className="item" onClick={() => toggleSubmenu('gestion')}>
-                                    <div className="selector"></div>
-                                    <span className="material-symbols-outlined item-icono">check_in_out</span>
-                                    <div className="item-text">
-                                        <p>Gestion</p>
-                                        <i className='bx bxs-chevron-right flecha-item'></i>
-                                    </div>
-                                </div>
-                                <ul className="submenu">
-                                    <li>
-                                        <NavLink to={'/disponibles'} className="item">
+                            {user.is_staff || user.is_superuser ? (
+                                <>
+                                    <li className="menu-item">
+                                        <NavLink to='/inicio' className="item">
                                             <div className="selector"></div>
-                                            <i className='bx bx-cart-add submenu-icono'></i>
-                                            <p className="item-text">Recepción</p>
+                                            <i className='bx bx-home-alt-2 item-icono'></i>
+                                            <div className="item-text">
+                                                <p>Inicio</p>
+                                            </div>
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to={'/ocupadas'} className="item">
+
+                                    <li className={`menu-item ${submenuGestion ? 'activo' : ''}`}>
+                                        <div className="item" onClick={() => toggleSubmenu('gestion')}>
                                             <div className="selector"></div>
-                                            <i className='bx bx-cart-add submenu-icono'></i>
-                                            <p className="item-text">Salida</p>
+                                            <span className="material-symbols-outlined item-icono">check_in_out</span>
+                                            <div className="item-text">
+                                                <p>Gestion</p>
+                                                <i className='bx bxs-chevron-right flecha-item'></i>
+                                            </div>
+                                        </div>
+                                        <ul className="submenu">
+                                            <li>
+                                                <NavLink to={'/disponibles'} className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-cart-add submenu-icono'></i>
+                                                    <p className="item-text">Recepción</p>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to={'/ocupadas'} className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-cart-add submenu-icono'></i>
+                                                    <p className="item-text">Salida</p>
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li className={`menu-item ${submenuVentas ? 'activo' : ''}`}>
+                                        <div className="item" onClick={() => toggleSubmenu('ventas')}>
+                                            <div className="selector"></div>
+                                            <i className='bx bx-store-alt item-icono'></i>
+                                            <div className="item-text">
+                                                <p>Tienda</p>
+                                                <i className='bx bxs-chevron-right flecha-item'></i>
+                                            </div>
+                                        </div>
+                                        <ul className="submenu">
+                                            <li>
+                                                <NavLink to={'/tienda'} className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-cart-add submenu-icono'></i>
+                                                    <p className="item-text">Vender</p>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to={'/productos'} className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-barcode submenu-icono'></i>
+                                                    <p className="item-text">Productos</p>
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li className="menu-item">
+                                        <NavLink to={'/habitaciones'} className="item">
+                                            <div className="selector"></div>
+                                            <span className="material-symbols-outlined item-icono">bedroom_parent</span>
+                                            <div className="item-text">
+                                                <p>Habitaciones</p>
+                                            </div>
                                         </NavLink>
                                     </li>
-                                </ul>
-                            </li>
 
-                            <li className={`menu-item ${submenuVentas ? 'activo' : ''}`}>
-                                <div className="item" onClick={() => toggleSubmenu('ventas')}>
-                                    <div className="selector"></div>
-                                    <i className='bx bx-store-alt item-icono'></i>
-                                    <div className="item-text">
-                                        <p>Tienda</p>
-                                        <i className='bx bxs-chevron-right flecha-item'></i>
-                                    </div>
-                                </div>
-                                <ul className="submenu">
-                                    <li>
-                                        <NavLink to={'/tienda'} className="item">
+                                    <li className="menu-item">
+                                        <NavLink to={'/huespedes'} className="item">
                                             <div className="selector"></div>
-                                            <i className='bx bx-cart-add submenu-icono'></i>
-                                            <p className="item-text">Vender</p>
+                                            <span className="material-symbols-outlined item-icono">hotel</span>
+                                            <div className="item-text">
+                                                <p>Huespedes</p>
+                                            </div>
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to={'/productos'} className="item">
-                                            <div className="selector"></div>
-                                            <i className='bx bx-barcode submenu-icono'></i>
-                                            <p className="item-text">Productos</p>
-                                        </NavLink>
-                                    </li>
-                                </ul>
-                            </li>
 
-                            <li className="menu-item">
-                                <NavLink to={'/habitaciones'} className="item">
-                                    <div className="selector"></div>
-                                    <span className="material-symbols-outlined item-icono">bedroom_parent</span>
-                                    <div className="item-text">
-                                        <p>Habitaciones</p>
-                                    </div>
-                                </NavLink>
-                            </li>
+                                    {/* <Item titulo={'nose'} ruta={'/huespedes'} icono={<i className='bx bx-group item-icono'></i>} /> */}
 
-                            <li className="menu-item">
-                                <NavLink to={'/huespedes'} className="item">
-                                    <div className="selector"></div>
-                                    <span className="material-symbols-outlined item-icono">hotel</span>
-                                    <div className="item-text">
-                                        <p>Huespedes</p>
-                                    </div>
-                                </NavLink>
-                            </li>
-                            <li className="menu-item">
-                                <NavLink to='/usuarios' className="item">
-                                    <div className="selector"></div>
-                                    <i className='bx bx-group item-icono'></i>
-                                    <div className="item-text">
-                                        <p>Usuarios</p>
-                                    </div>
-                                </NavLink>
-                            </li>
+                                    {user.is_superuser ? (
+                                        <>
+                                            <li className="menu-item">
+                                                <NavLink to='/usuarios' className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-group item-icono'></i>
+                                                    <div className="item-text">
+                                                        <p>Usuarios</p>
+                                                    </div>
+                                                </NavLink>
+                                            </li>
+                                            <li className="menu-item">
+                                                <NavLink to={'/hoteles'} className="item">
+                                                    <div className="selector"></div>
+                                                    <i className='bx bx-group item-icono'></i>
+                                                    <p className="item-text">Hoteles</p>
+                                                </NavLink>
+                                            </li>
+                                        </>
+                                    ) : null}
+                                </>
+                            ) : (
+                                <li className="menu-item">
+                                    <NavLink to={'/limpieza'} className="item">
+                                        <div className="selector"></div>
+                                        <i className='bx bx-group item-icono'></i>
+                                        <p className="item-text">Mantenimiento</p>
+                                    </NavLink>
+                                </li>
+                            )}
 
                             <li className={`menu-item ${submenuConfig ? 'activo' : ''}`}>
                                 <div className="item" onClick={() => toggleSubmenu('configuracion')}>
@@ -223,13 +249,6 @@ const Base = ({logout}) => {
                                     </div>
                                 </div>
                                 <ul className="submenu">
-                                    <li>
-                                        <NavLink to={'/hoteles'} className="item">
-                                            <div className="selector"></div>
-                                            <i className='bx bx-group item-icono'></i>
-                                            <p className="item-text">Hoteles</p>
-                                        </NavLink>
-                                    </li>
                                     <li>
                                         <NavLink to={'/general'} className="item">
                                             <div className="selector"></div>
@@ -259,6 +278,8 @@ const Base = ({logout}) => {
                         </ul>
                     </div>
 
+                    {/* MENU USUARIO */}
+
                     <div className="item-user">
                         <div className="item-user-icono">
                             <i className='bx bxs-user'></i>
@@ -270,9 +291,6 @@ const Base = ({logout}) => {
                     </div>
                 </div>
 
-                <div className="cont-flecha-menu-abrir">
-                    <i className='bx bxs-chevron-right'></i>
-                </div>
             </div>
 
             {/* Main content */}

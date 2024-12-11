@@ -245,8 +245,8 @@ const FormUser = ({ action, user, funcion}) => {
         last_name: user?.last_name || "",
         email: user?.email || "",
         password: "",
-        rol: user?.is_staff || false,
-        estado: user?.is_active || true,
+        is_staff: user?.is_staff || false,
+        is_active: user?.is_active || true,
     });
 
     useEffect(() => {
@@ -256,8 +256,16 @@ const FormUser = ({ action, user, funcion}) => {
     }, []);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value, type, checked } = e.target;
+        
+        // Convertimos a booleano si el campo es `is_staff` o `is_active`
+        const newValue = (name === "is_staff" || name === "is_active") 
+            ? (type === "checkbox" ? checked : value === "true") 
+            : value;
+    
+        setFormData({ ...formData, [name]: newValue });
     };
+    
 
 
     const manejoSubmit = async (e) => {
@@ -402,7 +410,7 @@ const FormUser = ({ action, user, funcion}) => {
                     <select
                         className="imput"
                         id="tipo"
-                        name="rol"
+                        name="is_staff"
                         value={formData.is_staff}
                         onChange={handleChange}
                     >
@@ -415,7 +423,7 @@ const FormUser = ({ action, user, funcion}) => {
                     <select
                         className="imput"
                         id="estado"
-                        name="estado"
+                        name="is_active"
                         value={formData.is_active}
                         onChange={handleChange}
                     >

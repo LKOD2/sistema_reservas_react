@@ -18,11 +18,13 @@ export function Gestion({modo}) {
         }
    
         const filtro = modo === 'venta' ? 'ocupada' : modo;
-        getDatos(filtro, hotel.id); 
+
+        const ruta = modo === 'limpieza' ? 'mantenimiento' : 'habitaciones'
+        getDatos(filtro, hotel.id, ruta); 
 
     }, [modo, hotel]); 
 
-    const getDatos = async (filtro, hotel) => {
+    const getDatos = async (filtro, hotel, ruta) => {
         try {
             const token = localStorage.getItem('token');
             if (!token) {
@@ -31,7 +33,7 @@ export function Gestion({modo}) {
             }
 
             const response = await fetch(
-                `http://localhost:8000/gestion/habitaciones?estado=${filtro}&hotel=${hotel}`,
+                `http://localhost:8000/gestion/${ruta}?estado=${filtro}&hotel=${hotel}`,
                 {
                     method: 'GET',
                     headers: {

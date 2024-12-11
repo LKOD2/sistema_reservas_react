@@ -1,6 +1,7 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
-# Serializer para estructurar el usuario
-class LoginSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    username = serializers.CharField(max_length=150)
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'is_staff', 'is_superuser') 
